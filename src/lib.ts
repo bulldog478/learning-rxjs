@@ -60,7 +60,20 @@ export const mockDelete = (id: number): Observable<boolean> => {
     }, random(10, 1000))
     return () => {
       clearTimeout(timmer)
-      console.warn('post canceled')
+      console.warn('delete canceled')
     }
   })
+}
+
+export const createTodoItem = (val: string) => {
+  const result = <HTMLLIElement>document.createElement('LI')
+  result.classList.add('list-group-item')
+  const innerHTML = `
+    ${val}
+    <button type="button" class="btn btn-default button-remove pull-right" aria-label="right Align">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+  `
+  result.innerHTML = innerHTML
+  return result
 }
